@@ -1,0 +1,64 @@
+.font-action{
+	font-size: 18px !important;
+}
+.sub_title{
+	color: #66615b !important;
+}
+
+input[type=checkbox]
+{
+  /* Double-sized Checkboxes */
+  -ms-transform: scale(1.5); /* IE */
+  -moz-transform: scale(1.5); /* FF */
+  -webkit-transform: scale(1.5); /* Safari and Chrome */
+  -o-transform: scale(1.5); /* Opera */
+  transform: scale(1.5);
+  padding: 10px;
+}
+
+/* Might want to wrap a span around your checkbox text */
+.checkboxtext
+{
+    font-size: 14px !important;
+    display: inline !important;
+    padding-left: 5px !important;
+}
+
+.error{
+    font-weight: bolder !important;
+    color: #ef8157!important;
+    font-size: 14px !important;
+}
+.star{
+  color: red !important;
+}
+
+a:hover{
+  text-decoration: none !important;
+  color: #808080 !important;
+}
+.lowPassword {
+    color: red
+}
+
+.stilllowPassword {
+    color: #E66C2C
+}
+
+.mediumPassword {
+    color: #2D98F3
+}
+
+.averagePassword {
+    color: #0DE400
+}
+
+.strongPassword {
+    color: #FFA534
+}
+.img {
+    margin-left: 47px !important;
+}
+#btn_add{
+    background-color:#455A64 !important;
+}
