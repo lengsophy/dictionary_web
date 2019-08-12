@@ -1,10 +1,11 @@
-@extends('layouts.login') 
+@extends('layouts.login')
 @section('content')
 <div class="container">
     <div class="col-lg-4 col-md-6 ml-auto mr-auto">
         <form method="POST" action="{{ route('login') }}" autocomplete="off">@csrf
             <div class="card card-login">
-                <img src="{!! url('assets/img/text_logo.png') !!}" style="display: block;margin-left: auto;margin-right: auto;width: 80%;"/>
+  <!--               <img src="" style="display: block;margin-left: auto;margin-right: auto;width: 80%;"/> -->
+                <center style="margin-top: 20px"><h3>LOGIN</h3><center>
                 <div class="card-body ">
                     <strong><label>Email or Username</label></strong>
                     <div class="input-group">

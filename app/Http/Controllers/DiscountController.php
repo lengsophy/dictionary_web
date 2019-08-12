@@ -106,7 +106,7 @@ class DiscountController extends Controller
      */
     public function destroy(Request $request, Discount $discount)
     {
-        if (!is_permission('discount')) {
+        if (!is_permission('dictionarylist')) {
             return view('errors.404');
         }
         $discount= Discount::where('id', $request->id)->update([
@@ -122,7 +122,7 @@ class DiscountController extends Controller
     // disnable
     public function disable(Request $request)
     {
-        if (!is_permission('discount')) {
+        if (!is_permission('dictionarylist')) {
             return view('errors.404');
         }
         $disable = Discount::where('id', $request->id)->update(['status' => 0]);

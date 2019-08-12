@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/png" href="{{url('assets/img/logo.png')}}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport'
     />
@@ -30,7 +29,7 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKDMSK6" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     <div class="wrapper">
-        @include('layouts.sidebar') 
+        @include('layouts.sidebar')
 
         <div class="main-panel">
             <!-- Navbar -->
@@ -69,7 +68,7 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                               document.getElementById('logout-form').submit();">
                                     <i class="nc-icon nc-button-power"></i> Log out</a>
-                                   
+
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>

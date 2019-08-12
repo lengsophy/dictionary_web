@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <div class="content">
-    <div class="container-fluid">   
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-9">
                 {!! Form::open(['url' => 'discount','method' => 'GET','class' => 'form-horizontal', 'autocomplete' => 'off', 'id' => 'active']) !!}
@@ -15,18 +15,18 @@
                             <div class="input-group">
                                 {{ Form::submit('Search', ['class' => 'form-control ','style' =>'background-color: #455A64;color: #fff;'])}}
                             </div>
-                        </div>                  
+                        </div>
                     </div>
                 {!! Form::close() !!}
             </div>
             <div class="col-md-3">
                 <div class="btn-group pull-right" role="group">
-                    <a href="{{url('discount/create')}}" > 
+                    <a href="{{url('dictionarylist/create')}}" >
                         <button class="btn btn-primary " id="btn_add">Add Dictionary</button>
                     </a>
-                </div>   
+                </div>
             </div>
-        </div>  
+        </div>
         &nbsp;&nbsp;
         <div class="row">
             <div class="col-md-12">
@@ -52,7 +52,7 @@
                                 @if(count($discounts)>=1)
                                     @foreach ($discounts as $key => $item)
                                     <tr>
-                                        <!-- <td>{{$item->id}}</td>
+                                        <td>{{$item->id}}</td>
                                         <td>{{$item->percentage}}</td>
                                         <td>{{$item->trip_number}}</td>
                                         <td>{{$item->description}}</td>
@@ -61,34 +61,30 @@
                                         <td>
                                             @if($item->status == 1)
                                                 Active
-                                            @else 
+                                            @else
                                                 Inactive
                                             @endif
-                                        </td> -->
-                                        <td>BOOK</td>
-                                        <td>Book</td>
-                                        <td>សៀវភៅ</td>
-                                        <td>livre</td>
+                                        </td>
                                         <td>{{$item->created_at}}</td>
                                         <td>{{$item->updated_at}}</td>
                                         <td>
                                             @if($item->status == 1)
                                                 Active
-                                            @else 
+                                            @else
                                                 Inactive
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="{{ url('discount/edit/'.$item->id) }}" class="btn btn-link"><i class="fa fa-edit font-action" data-toggle="tooltip" title="Edit"></i></a>
-                                            <a href="#" class="btn btn-link" data-href="discount/destroy/{{$item->id}}" data-toggle="modal" data-target="#confirm-delete">
+                                            <a href="{{ url('dictionarylist/edit/'.$item->id) }}" class="btn btn-link"><i class="fa fa-edit font-action" data-toggle="tooltip" title="Edit"></i></a>
+                                            <a href="#" class="btn btn-link" data-href="dictionarylist/destroy/{{$item->id}}" data-toggle="modal" data-target="#confirm-delete">
                                                 <i class="fa fa-remove font-action" data-toggle="tooltip" title="Delete"></i>
                                             </a>
                                             @if($item->status == 0)
-                                                <a href="#" class="btn-link btn-info" data-href="discount/enable/{{$item->id}}" data-toggle="modal" data-target="#confirm-enable">
+                                                <a href="#" class="btn-link btn-info" data-href="dictionarylist/enable/{{$item->id}}" data-toggle="modal" data-target="#confirm-enable">
                                                     <i class="fa fa-check-square-o font-action" style="color:#FFA534" data-toggle="tooltip" title="Enable"></i>
                                                 </a>
                                             @else
-                                                <a href="#" class="btn-link btn-info" data-href="discount/disable/{{$item->id}}" data-toggle="modal" data-target="#confirm-disable">
+                                                <a href="#" class="btn-link btn-info" data-href="dictionarylist/disable/{{$item->id}}" data-toggle="modal" data-target="#confirm-disable">
                                                     <i class="fa fa-ban font-action" style="color:#FB404B" data-toggle="tooltip" title="Disable"></i>
                                                 </a>
                                             @endif
@@ -101,14 +97,14 @@
                                 </tr>
                                 @endif
                             </tbody>
-                        </table>                       
+                        </table>
                     </div>
                     <div class="pagination-footer clearfix">
                         <span class="pull-right">{{ $discounts->links() }}</span>
-                    </div> 
+                    </div>
                 </div>
             </div>
-        </div>  
+        </div>
     </div>
     <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
