@@ -50,10 +50,10 @@ Route::group(['prefix' => 'role', 'middleware' => ['auth']], function () {
 
 // discount
 Route::group(['prefix' => 'dictionarylist', 'middleware' => ['auth']], function () {
-    Route::get('/', 'DiscountController@index')->name('dictionarylist');
-    Route::match(['GET', 'POST'], 'create', 'DiscountController@create');
-    Route::match(['GET', 'POST'], 'edit/{id}', 'DiscountController@edit');
-    Route::match(['GET', 'POST'], 'destroy/{id}', 'DiscountController@destroy');
-    Route::match(['GET','POST'], 'disable/{id}', 'DiscountController@disable');
-    Route::match(['GET','POST'], 'enable/{id}', 'DiscountController@enable');
+    Route::get('/', 'WordController@index')->name('dictionarylist');
+    Route::match(['GET', 'POST'], 'create', 'WordController@create');
+    Route::match(['GET', 'POST'], 'edit/{id}', 'WordController@edit');
+    Route::match(['GET', 'POST'], 'destroy/{id}', 'WordController@destroy');
+    Route::match(['GET','POST'], 'disable/{id}', 'WordController@disable');
+    Route::match(['GET','POST'], 'enable/{id}', 'WordController@enable');
 });

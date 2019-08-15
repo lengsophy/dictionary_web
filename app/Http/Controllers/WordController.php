@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Discount;
 use Auth;
 
-class DiscountController extends Controller
+class WordController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,7 +25,7 @@ class DiscountController extends Controller
             $discount = Discount::orderBy('id', "DESC");
         }
         $data['discounts'] = $discount->where('deleted_at', null)->paginate(10);
-        return view('discount.index', $data);
+        return view('word.index', $data);
     }
 
     /**
@@ -39,7 +39,7 @@ class DiscountController extends Controller
             return view('errors.404');
         }
         if (!$_POST) {
-            return view('discount.create');
+            return view('word.create');
         } else {
             $validation = $request->validate([
                 'percentage' => 'required',
@@ -75,7 +75,7 @@ class DiscountController extends Controller
         }
         if (!$_POST) {
             $data['item'] = Discount::where('id', $request->id)->first();
-            return view('discount.edit', $data);
+            return view('word.edit', $data);
         } else {
             $validation = $request->validate([
                 'percentage' => 'required',
