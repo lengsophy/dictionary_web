@@ -1,4 +1,4 @@
-@extends('layouts.app') 
+@extends('layouts.app')
 @section('content')
 <div class="content">
     <div class="container-fluid">
@@ -6,28 +6,28 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <h3>Discount Create Form</h3>
+                        <h3>Word Create Form</h3>
                         <form method="POST" action="{{ url('discount/create') }}" autocomplete="off" id="create_discounts_form">
                             @csrf
                             <div class="form-group row">
                                 <span for="percentage" class="col-md-4 col-form-label text-md-right">Percentage % <star class="star">*</star></span>
                                 <div class="col-md-6">
-                                    <input id="percentage" type="text" class="form-control{{ $errors->has('percentage') ? ' is-invalid' : '' }}" name="percentage" value="{{ old('percentage') }}" placeholder="Percentage %" onkeypress='validate(event)'> 
+                                    <input id="percentage" type="text" class="form-control{{ $errors->has('percentage') ? ' is-invalid' : '' }}" name="percentage" value="{{ old('percentage') }}" placeholder="Percentage %" onkeypress='validate(event)'>
                                     @if ($errors->has('percentage'))
                                     <span class="text-danger" role="alert">
                                         <strong>{{ $errors->first('percentage') }}</strong>
-                                    </span> 
+                                    </span>
                                     @endif
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <span for="trip_number" class="col-md-4 col-form-label text-md-right">Trip Number <star class="star">*</star></span>
                                 <div class="col-md-6">
-                                    <input id="trip_number" type="text" class="form-control{{ $errors->has('trip_number') ? ' is-invalid' : '' }}" name="trip_number" value="{{ old('trip_number') }}" placeholder="Trip Number" onkeypress='validate(event)'> 
+                                    <input id="trip_number" type="text" class="form-control{{ $errors->has('trip_number') ? ' is-invalid' : '' }}" name="trip_number" value="{{ old('trip_number') }}" placeholder="Trip Number" onkeypress='validate(event)'>
                                     @if ($errors->has('trip_number'))
                                     <span class="text-danger" role="alert">
                                         <strong>{{ $errors->first('trip_number') }}</strong>
-                                    </span> 
+                                    </span>
                                     @endif
                                 </div>
                             </div>
@@ -56,10 +56,10 @@
                                     @if ($errors->has('description'))
                                         <span class="text-danger" role="alert">
                                             <strong>{{ $errors->first('description') }}</strong>
-                                        </span> 
+                                        </span>
                                     @endif
                                 </div>
-                            </div>                           
+                            </div>
                             <br>
                             <div class="form-group row mb-0">
                                 <div class="col-md-12">
@@ -71,10 +71,10 @@
                             </div>
                         </form>
                     </div>
-                </div>               
+                </div>
             </div>
         </div>
-    </div> 
+    </div>
 </div>
 @endsection
 @push('scripts')
@@ -95,7 +95,7 @@
                 onSelect: function(selected) {
                    $("#start_date").datepicker("option","maxDate", selected)
                 }
-            }); 
+            });
         });
     </script>
 @endpush

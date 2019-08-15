@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Discount;
+use App\Models\Word;
 use Auth;
 
 class WordController extends Controller
@@ -20,11 +20,11 @@ class WordController extends Controller
         }
         if ($request->name) {
             $search_info = trim($request->name);
-            $discount =  Discount::where('percentage', 'LIKE', "%" . $search_info . "%")->orWhere('trip_number', $search_info);
+            $word =  Word::where('percentage', 'LIKE', "%" . $search_info . "%")->orWhere('trip_number', $search_info);
         } else {
-            $discount = Discount::orderBy('id', "DESC");
+            $word = Word::orderBy('id', "DESC");
         }
-        $data['discounts'] = $discount->where('deleted_at', null)->paginate(10);
+        $data['discounts'] = $word->where('deleted_at', null)->paginate(10);
         return view('word.index', $data);
     }
 
@@ -48,7 +48,7 @@ class WordController extends Controller
                 'end_date' => 'required',
             ]);
             if ($validation) {
-                Discount::create([
+                Word::create([
                     'percentage' => $request->percentage ? $request->percentage :0,
                     'trip_number' => $request->trip_number ? $request->trip_number : 0,
                     'description' => $request->description,
@@ -56,7 +56,7 @@ class WordController extends Controller
                     'end_at' => date("Y-m-d", strtotime($request->end_date)),
                     'created_by' => Auth::user()->id,
                 ]);
-                flash_message('success', 'Create Discount Successfully');
+                flash_message('success', 'Create Word Successfully');
                 return redirect("dictionarylist");
             }
         }
@@ -65,16 +65,16 @@ class WordController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Discount  $discount
+     * @param  \App\Word  $word
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request, Discount $discount)
+    public function edit(Request $request, Word $word)
     {
         if (!is_permission('dictionarylist')) {
             return view('errors.404');
         }
         if (!$_POST) {
-            $data['item'] = Discount::where('id', $request->id)->first();
+            $data['item'] = Word::where('id', $request->id)->first();
             return view('word.edit', $data);
         } else {
             $validation = $request->validate([
@@ -84,7 +84,7 @@ class WordController extends Controller
                 'end_date' => 'required',
             ]);
             if ($validation) {
-                Discount::where('id', $request->id)->update([
+                Word::where('id', $request->id)->update([
                     'percentage' => $request->percentage ? $request->percentage :0,
                     'trip_number' => $request->trip_number ? $request->trip_number : 0,
                     'description' => $request->description,
@@ -92,7 +92,7 @@ class WordController extends Controller
                     'end_at' => date("Y-m-d", strtotime($request->end_date)),
                     'updated_by' => Auth::user()->id,
                 ]);
-                flash_message('success', 'Update Discount Successfully');
+                flash_message('success', 'Update Word Successfully');
                 return redirect("dictionarylist");
             }
         }
@@ -101,20 +101,20 @@ class WordController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Discount  $discount
+     * @param  \App\Word  $word
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, Discount $discount)
+    public function destroy(Request $request, Word $word)
     {
         if (!is_permission('dictionarylist')) {
             return view('errors.404');
         }
-        $discount= Discount::where('id', $request->id)->update([
+        $word= Word::where('id', $request->id)->update([
                         'deleted_at' => date('Y-m-d H:i:s'),
                         'deleted_by' => Auth::user()->id,
                     ]);
-        if ($discount) {
-            flash_message('success', 'Delete Discount Successfully');
+        if ($word) {
+            flash_message('success', 'Delete Word Successfully');
             return redirect('dictionarylist');
         }
     }
@@ -125,9 +125,9 @@ class WordController extends Controller
         if (!is_permission('dictionarylist')) {
             return view('errors.404');
         }
-        $disable = Discount::where('id', $request->id)->update(['status' => 0]);
+        $disable = Word::where('id', $request->id)->update(['status' => 0]);
         if ($disable) {
-            flash_message('success', 'Disable Discount Successfully');
+            flash_message('success', 'Disable Word Successfully');
             return redirect('dictionarylist');
         }
     }
@@ -137,9 +137,9 @@ class WordController extends Controller
         if (!is_permission('dictionarylist')) {
             return view('errors.404');
         }
-        $enable = Discount::where('id', $request->id)->update(['status' => 1]);
+        $enable = Word::where('id', $request->id)->update(['status' => 1]);
         if ($enable) {
-            flash_message('success', 'Enable Discount Successfully');
+            flash_message('success', 'Enable Word Successfully');
             return redirect('dictionarylist');
         }
     }
